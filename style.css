@@ -461,6 +461,18 @@ footer {
     }
 }
 
+.team-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 0 1 calc(25% - 2rem);
+    margin: 1rem;
+    text-align: center;
+}
+
 /* Hover effects for mobile */
 @media (hover: hover) {
     .btn:hover,
