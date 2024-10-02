@@ -53,6 +53,20 @@ header {
     align-items: center;
 }
 
+.logo {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
 .menu-toggle {
     background: none;
     border: none;
@@ -107,6 +121,12 @@ header {
 
 .nav-links a:hover {
     color: var(--gold-color);
+}
+
+.contact-info-mobile {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--white-color);
 }
 
 /* Hero Section Styles */
@@ -211,7 +231,7 @@ header {
     width: fit-content;
     margin: 1rem auto;
     background: transparent;
-    color: var(--green-color);
+    color: var(--gold-color);
     padding: 0.8rem 1.5rem;
     border: 2px solid var(--gold-color);
     border-radius: 5px;
@@ -351,7 +371,7 @@ h2 {
 .form-group textarea {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--gold-color);
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
 }
 
@@ -426,80 +446,6 @@ footer {
     color: var(--white-color);
     text-align: center;
     padding: 2rem 0;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-wrap: wrap;
-    }
-
-    .logo {
-        flex: 1;
-    }
-
-    .menu-toggle {
-        display: block;
-        order: 1;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        width: 100%;
-        padding: 1rem 0;
-        background-color: rgba(58, 90, 64, 0.9);
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links li {
-        flex: 0 0 33.33%;
-        margin: 0.5rem 0;
-    }
-
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-section p {
-        font-size: 1rem;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .step,
-    .step.reverse {
-        flex-direction: column;
-    }
-
-    .step-image,
-    .step-content {
-        padding: 1rem 0;
-    }
-
-    .contact-info-mobile {
-        width: 100%;
-        text-align: center;
-        padding: 1rem 0;
-        background-color: rgba(58, 90, 64, 0.9);
-        color: var(--white-color);
-    }
-}
-
-/* Hover effects for mobile */
-@media (hover: hover) {
-    .btn:hover,
-    .nav-links a:hover,
-    .product-card:hover {
-        cursor: pointer;
-    }
 }
 
 /* Map container */
