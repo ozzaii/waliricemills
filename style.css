@@ -18,6 +18,7 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     background-color: var(--light-color);
+    padding-top: 80px; /* Adjust this value based on your header height */
 }
 
 .container {
@@ -31,6 +32,8 @@ header {
     background-color: var(--primary-color);
     padding: 1rem 0;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     transition: var(--transition);
@@ -80,6 +83,11 @@ nav {
     color: var(--light-color);
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+main {
+    position: relative;
+    z-index: 1;
 }
 
 /* Hero Section */
@@ -292,28 +300,43 @@ footer {
     padding: 2rem 0;
 }
 
+/* Process Page Specific Styles */
+.process-page header {
+    position: relative;
+    transform: none !important;
+}
+
+.process-page body {
+    padding-top: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        order: 1;
+    }
+
     .menu-toggle {
         display: block;
+        order: 2;
     }
-    
+
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
-        background-color: var(--primary-color);
-        padding: 1rem 0;
+        order: 3;
+    }
+
+    .nav-links.show {
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
-    .nav-links.show {
-        display: flex;
-    }
-    
+
     .nav-links li {
         margin: 1rem 0;
     }
