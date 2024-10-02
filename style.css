@@ -88,21 +88,21 @@ main {
 }
 
 /* Hero Section */
-#hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg') no-repeat center center/cover;
-    height: calc(100vh - 80px);
+#hero, #about-hero, #faq-hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 50vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--secondary-color);
 }
 
-.hero-content h1 {
+.hero-content h1, #about-hero h1, #faq-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.hero-content p {
+.hero-content p, #about-hero p, #faq-hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
@@ -291,6 +291,55 @@ h2 {
     color: var(--accent-color);
 }
 
+/* FAQ Styles */
+.faq-item {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+    padding: 1rem;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.faq-item h3::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.faq-item.active h3::after {
+    content: '-';
+}
+
+.faq-answer {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-answer {
+    padding: 1rem;
+}
+
+.faq-answer p, .faq-answer ul {
+    margin-bottom: 1rem;
+}
+
+.faq-answer ul {
+    padding-left: 1.5rem;
+}
+
 /* Footer */
 footer {
     background: var(--primary-color);
@@ -332,11 +381,11 @@ footer {
         margin: 0.5rem 0;
     }
     
-    .hero-content h1 {
+    .hero-content h1, #about-hero h1, #faq-hero h1 {
         font-size: 2.5rem;
     }
     
-    .hero-content p {
+    .hero-content p, #about-hero p, #faq-hero p {
         font-size: 1rem;
     }
     
