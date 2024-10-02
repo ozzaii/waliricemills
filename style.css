@@ -39,11 +39,11 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .top-nav {
-    background-color: transparent;
+    background-color: rgba(58, 90, 64, 0.7); /* semi-transparent primary color */
     padding: 1rem 0;
     transition: background-color 0.3s ease-in-out;
 }
@@ -51,7 +51,6 @@ header {
 .sticky-nav {
     background-color: var(--primary-color);
     padding: 0.5rem 0;
-    transition: transform 0.3s ease-in-out;
 }
 
 .nav-container {
