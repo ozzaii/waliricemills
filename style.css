@@ -40,66 +40,32 @@ header {
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
+    background-color: rgba(58, 90, 64, 0.9);
 }
 
 .top-nav {
-    background-color: rgba(58, 90, 64, 0.7); /* semi-transparent primary color */
     padding: 1rem 0;
-    transition: background-color 0.3s ease-in-out;
 }
 
-.sticky-nav {
-    background-color: var(--primary-color);
-    padding: 0.5rem 0;
-}
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .nav-links li {
+        flex: 0 0 33.33%;
+        margin: 0.5rem 0;
+    }
 
-.logo {
-    color: var(--white-color);
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
-.nav-links li {
-    margin-left: 2rem;
-}
-
-.nav-links a {
-    color: var(--white-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--gold-color);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--white-color);
-    font-size: 1.5rem;
-    cursor: pointer;
+    .contact-info-mobile {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        background-color: rgba(58, 90, 64, 0.9);
+        color: var(--white-color);
+    }
 }
 
 /* Hero Section Styles */
@@ -211,6 +177,10 @@ header {
     overflow: hidden;
     margin: 1rem 0;
     text-align: center;
+    display: block;
+    width: fit-content;
+    margin: 1rem auto;
+}
 }
 
 .btn::before {
