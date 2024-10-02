@@ -10,23 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Sticky header and hide/show on scroll
     let lastScrollTop = 0;
+    let scrollThreshold = 100; // Adjust this value as needed
+
     window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+            // Scrolling down and past threshold
             header.style.top = `-${header.offsetHeight}px`;
         } else {
-            // Scrolling up
+            // Scrolling up or above threshold
             header.style.top = '0';
         }
-        lastScrollTop = scrollTop;
 
-        if (scrollTop > 100) {
+        if (currentScroll > scrollThreshold) {
             header.classList.add('sticky');
         } else {
             header.classList.remove('sticky');
         }
-    });
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    }, false);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
