@@ -1,51 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Load navbar
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-            initializeNavbar();
-        });
+    const header = document.querySelector('header');
+    const topNav = document.querySelector('.top-nav');
+    const stickyNav = document.querySelector('.sticky-nav');
+    let lastScrollTop = 0;
 
-    function initializeNavbar() {
-        const topNav = document.querySelector('.top-nav');
-        const stickyNav = document.querySelector('.sticky-nav');
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = stickyNav.querySelector('.nav-links');
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
 
-        // Mobile menu toggle
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
+        if (scrollTop > window.innerHeight) {
+            topNav.style.display = 'none';
+            stickyNav.style.display = 'block';
+        } else {
+            topNav.style.display = 'block';
+            stickyNav.style.display = 'none';
+        }
 
-        // Sticky header and hide/show on scroll
-        let lastScrollTop = 0;
-        let scrollThreshold = 100; // Adjust this value as needed
-
-        window.addEventListener('scroll', () => {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Show/hide top nav
-            if (currentScroll <= scrollThreshold) {
-                topNav.style.opacity = 1;
-                stickyNav.style.display = 'none';
-            } else {
-                topNav.style.opacity = 0;
-                stickyNav.style.display = 'block';
-            }
-
-            // Show/hide sticky nav
-            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
-                // Scrolling down and past threshold
-                stickyNav.style.top = `-${stickyNav.offsetHeight}px`;
-            } else {
-                // Scrolling up or above threshold
-                stickyNav.style.top = '0';
-            }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        }, false);
-    }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
