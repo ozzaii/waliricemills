@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     }, false);
 
-    // Animated Headers
+    // Animated Header
     const animateHeaders = () => {
         const headers = document.querySelectorAll('.animate-header');
         headers.forEach(header => {
