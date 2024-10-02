@@ -8,36 +8,43 @@
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="container nav-container">
-                <a href="index.html" class="logo">Salman Rice Mill</a>
-                <button class="menu-toggle" id="menuToggle">☰</button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Our Products</a></li>
-                    <li><a href="process.html">Our Process</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <div id="navbar-placeholder"></div>
 
     <main>
-        <section id="products-hero">
+        <section id="products-hero" class="hero-section">
             <div class="container">
-                <h1>Our Premium Rice Products</h1>
+                <h1 class="animate-header">Our Premium Rice Products</h1>
                 <p>Quality in every grain, satisfaction in every bite</p>
+            </div>
+            <div class="hero-carousel">
+                <button class="carousel-arrow left">&lt;</button>
+                <div class="carousel-container">
+                    <div class="carousel-item">
+                        <img src="placeholder-rice1.jpg" alt="Premium Long Grain Rice">
+                        <h3>Premium Long Grain Rice</h3>
+                        <p>Perfect for pilafs and side dishes</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="placeholder-rice2.jpg" alt="Aromatic Basmati Rice">
+                        <h3>Aromatic Basmati Rice</h3>
+                        <p>Ideal for biryanis and special occasions</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="placeholder-rice3.jpg" alt="Whole Grain Brown Rice">
+                        <h3>Whole Grain Brown Rice</h3>
+                        <p>Nutritious option for health-conscious consumers</p>
+                    </div>
+                </div>
+                <button class="carousel-arrow right">&gt;</button>
             </div>
         </section>
 
         <section id="product-list">
             <div class="container">
+                <h2 class="animate-header">Our Rice Varieties</h2>
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="placeholder-long-grain.jpg" alt="Premium Long Grain Rice">
+                        <img src="placeholder-rice1.jpg" alt="Premium Long Grain Rice">
                         <h3>Premium Long Grain Rice</h3>
                         <p>Our classic long grain rice, perfect for everyday meals. Known for its fluffy texture and subtle flavor.</p>
                         <ul>
@@ -47,7 +54,7 @@
                         <a href="#" class="btn">Learn More</a>
                     </div>
                     <div class="product-card">
-                        <img src="placeholder-basmati.jpg" alt="Aromatic Basmati Rice">
+                        <img src="placeholder-rice2.jpg" alt="Aromatic Basmati Rice">
                         <h3>Aromatic Basmati Rice</h3>
                         <p>Premium basmati rice with a distinctive aroma. Ideal for special dishes and occasions.</p>
                         <ul>
@@ -57,7 +64,7 @@
                         <a href="#" class="btn">Learn More</a>
                     </div>
                     <div class="product-card">
-                        <img src="placeholder-brown-rice.jpg" alt="Whole Grain Brown Rice">
+                        <img src="placeholder-rice3.jpg" alt="Whole Grain Brown Rice">
                         <h3>Whole Grain Brown Rice</h3>
                         <p>Nutritious brown rice, rich in fiber and minerals. Perfect for health-conscious consumers.</p>
                         <ul>
@@ -72,7 +79,7 @@
 
         <section id="quality-assurance">
             <div class="container">
-                <h2>Our Quality Assurance</h2>
+                <h2 class="animate-header">Our Quality Assurance</h2>
                 <p>At Salman Rice Mill, we take pride in the quality of our products. Every batch of rice undergoes rigorous testing to ensure it meets our high standards:</p>
                 <ul>
                     <li>Grain size and shape consistency</li>
@@ -85,7 +92,7 @@
 
         <section id="bulk-orders">
             <div class="container">
-                <h2>Bulk Orders and Customization</h2>
+                <h2 class="animate-header">Bulk Orders and Customization</h2>
                 <p>Looking for large quantities or custom packaging? We offer flexible solutions for businesses of all sizes. Contact us to discuss your specific needs.</p>
                 <a href="index.html#contact" class="btn">Contact for Bulk Orders</a>
             </div>
