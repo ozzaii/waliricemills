@@ -57,6 +57,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Hero carousel
+    const carousel = document.querySelector('.hero-carousel');
+    if (carousel) {
+        const container = carousel.querySelector('.carousel-container');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const leftArrow = carousel.querySelector('.carousel-arrow.left');
+        const rightArrow = carousel.querySelector('.carousel-arrow.right');
+        let currentIndex = 0;
+
+        function showItem(index) {
+            container.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        leftArrow.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            showItem(currentIndex);
+        });
+
+        rightArrow.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            showItem(currentIndex);
+        });
+    }
+
+    // Animate headers on scroll
+    const animatedHeaders = document.querySelectorAll('.animate-header');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animatedHeaders.forEach(header => observer.observe(header));
+
     // Form submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -68,33 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Image lazy loading
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
-
-    // FAQ Accordion
+    // FAQ Accordion (if present on the page)
     const faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach(item => {
         const question = item.querySelector('h3');
-        const answer = item.querySelector('.faq-answer');
-
         question.addEventListener('click', () => {
-            // Toggle active class on the clicked item
             item.classList.toggle('active');
-
-            // Close other open items
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
