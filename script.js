@@ -22,11 +22,21 @@ function initializeNavbar() {
     menuToggle.addEventListener('click', () => {
         mobileMenu.classList.toggle('show');
         navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
+            if (mobileMenu.classList.contains('show')) {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            } else {
+                link.style.animation = '';
             }
+        });
+    });
+
+    // Close mobile menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+            navLinks.forEach(link => {
+                link.style.animation = '';
+            });
         });
     });
 
