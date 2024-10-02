@@ -338,7 +338,7 @@ h2 {
 .form-group textarea {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--gold-color);
     border-radius: 4px;
 }
 
