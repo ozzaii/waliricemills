@@ -15,38 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeNavbar() {
-    const header = document.querySelector('header');
-    const topNav = document.querySelector('.top-nav');
-    const stickyNav = document.querySelector('.sticky-nav');
     const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.querySelector('.nav-links');
-    let lastScrollTop = 0;
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelectorAll('.nav-links li');
 
-    window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-        }
-
-        if (scrollTop > 100) {
-            topNav.style.display = 'none';
-            stickyNav.style.display = 'block';
-        } else {
-            topNav.style.display = 'block';
-            stickyNav.style.display = 'none';
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, false);
-
-    // Mobile menu toggle
     menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
+        mobileMenu.classList.toggle('show');
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
     });
 
     // Smooth scrolling for anchor links
