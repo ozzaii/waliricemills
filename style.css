@@ -85,9 +85,8 @@ header {
     transition: right 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 60px;
-    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-menu.show {
@@ -98,6 +97,7 @@ header {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 .nav-links li {
