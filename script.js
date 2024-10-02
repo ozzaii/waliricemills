@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const topNav = document.querySelector('.top-nav');
-    const stickyNav = document.querySelector('.sticky-nav');
     let lastScrollTop = 0;
 
     window.addEventListener('scroll', () => {
@@ -15,12 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.transform = 'translateY(0)';
         }
 
-        if (scrollTop > window.innerHeight) {
-            topNav.style.display = 'none';
-            stickyNav.style.display = 'block';
+        if (scrollTop > 100) {
+            topNav.classList.add('sticky-nav');
         } else {
-            topNav.style.display = 'block';
-            stickyNav.style.display = 'none';
+            topNav.classList.remove('sticky-nav');
         }
 
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
