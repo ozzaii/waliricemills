@@ -33,7 +33,7 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
-    transition: var(--transition);
+    transition: transform 0.3s ease-in-out;
 }
 
 .top-nav {
@@ -44,7 +44,7 @@ header {
 .sticky-nav {
     background-color: var(--primary-color);
     padding: 0.5rem 0;
-    display: none;
+    transform: translateY(-100%);
 }
 
 .nav-container {
@@ -155,13 +155,20 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
     color: var(--white-color);
     border: none;
     font-size: 2rem;
     padding: 1rem;
     cursor: pointer;
     z-index: 3;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hero-section:hover .carousel-arrow,
+.hero-section:active .carousel-arrow {
+    opacity: 1;
 }
 
 .carousel-arrow.left {
@@ -197,6 +204,7 @@ header {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    margin: 1rem 0;
 }
 
 .btn::before {
@@ -284,21 +292,26 @@ h2 {
 .step {
     display: flex;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 }
 
-.step:nth-child(even) {
+.step.reverse {
     flex-direction: row-reverse;
 }
 
-.step img {
-    width: 40%;
+.step-image {
+    flex: 1;
+    padding: 0 2rem;
+}
+
+.step-image img {
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .step-content {
-    width: 55%;
+    flex: 1;
     padding: 0 2rem;
 }
 
@@ -432,13 +445,12 @@ footer {
     }
 
     .step,
-    .step:nth-child(even) {
+    .step.reverse {
         flex-direction: column;
     }
 
-    .step img,
+    .step-image,
     .step-content {
-        width: 100%;
         padding: 1rem 0;
     }
 }
