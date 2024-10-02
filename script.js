@@ -17,26 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add this to your script.js file
-
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
-    const headerHeight = header.offsetHeight;
-    
-    window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
-            // Scrolling down
-            header.style.transform = `translateY(-${headerHeight}px)`;
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -57,16 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.reset();
         });
     }
-
-    // FAQ accordion (if implemented)
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('h3');
-        const answer = item.querySelector('p');
-        question.addEventListener('click', () => {
-            answer.classList.toggle('show');
-        });
-    });
 
     // Image lazy loading
     const lazyImages = document.querySelectorAll('img[data-src]');
