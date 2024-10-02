@@ -8,9 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('show');
     });
     
-    // Sticky header
+    // Sticky header and hide/show on scroll
+    let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.style.top = `-${header.offsetHeight}px`;
+        } else {
+            // Scrolling up
+            header.style.top = '0';
+        }
+        lastScrollTop = scrollTop;
+
+        if (scrollTop > 100) {
             header.classList.add('sticky');
         } else {
             header.classList.remove('sticky');
@@ -28,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Form submission
-    const contactForm = document.getElementById('contact-form');
+    const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
