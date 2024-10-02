@@ -8,34 +8,40 @@
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="container nav-container">
-                <a href="index.html" class="logo">Salman Rice Mill</a>
-                <button class="menu-toggle" id="menuToggle">☰</button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Our Products</a></li>
-                    <li><a href="process.html">Our Process</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <div id="navbar-placeholder"></div>
 
     <main>
-        <section id="process-hero">
+        <section id="process-hero" class="hero-section">
             <div class="container">
-                <h1>Our Rice Milling Process</h1>
+                <h1 class="animate-header">Our Rice Milling Process</h1>
                 <p>From paddy to plate: The journey of premium rice</p>
+            </div>
+            <div class="hero-carousel">
+                <button class="carousel-arrow left">&lt;</button>
+                <div class="carousel-container">
+                    <div class="carousel-item">
+                        <img src="placeholder-harvesting.jpg" alt="Rice Harvesting">
+                        <h3>Harvesting</h3>
+                        <p>Carefully selecting the finest rice crops</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="placeholder-milling.jpg" alt="Rice Milling">
+                        <h3>Milling</h3>
+                        <p>State-of-the-art processing for perfect grains</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="placeholder-packaging.jpg" alt="Rice Packaging">
+                        <h3>Packaging</h3>
+                        <p>Preserving freshness and quality</p>
+                    </div>
+                </div>
+                <button class="carousel-arrow right">&gt;</button>
             </div>
         </section>
 
         <section id="process-overview">
             <div class="container">
-                <h2>Our Milling Journey</h2>
+                <h2 class="animate-header">Our Milling Journey</h2>
                 <p>At Salman Rice Mill, we combine traditional techniques with modern technology to ensure the highest quality rice. Our process preserves the natural goodness of each grain while meeting the highest standards of cleanliness and efficiency.</p>
             </div>
         </section>
@@ -45,51 +51,51 @@
                 <div class="step">
                     <img src="placeholder-harvesting.jpg" alt="Rice Harvesting">
                     <div class="step-content">
-                        <h3>1. Harvesting</h3>
+                        <h3 class="animate-header">1. Harvesting</h3>
                         <p>Our journey begins in the lush fields of Sheikhpura. We carefully monitor the rice crops and harvest at the optimal time to ensure peak flavor and nutritional value.</p>
                     </div>
                 </div>
                 <div class="step">
-                    <img src="placeholder-drying.jpg" alt="Rice Drying">
                     <div class="step-content">
-                        <h3>2. Drying and Storage</h3>
+                        <h3 class="animate-header">2. Drying and Storage</h3>
                         <p>The harvested paddy is gently dried to the ideal moisture content. Our state-of-the-art storage facilities maintain perfect conditions to preserve quality.</p>
                     </div>
+                    <img src="placeholder-drying.jpg" alt="Rice Drying">
                 </div>
                 <div class="step">
                     <img src="placeholder-husking.jpg" alt="Rice Husking">
                     <div class="step-content">
-                        <h3>3. Husking</h3>
+                        <h3 class="animate-header">3. Husking</h3>
                         <p>Using advanced husking machines, we carefully remove the outer layer of the paddy, transforming it into brown rice while minimizing breakage.</p>
                     </div>
                 </div>
                 <div class="step">
-                    <img src="placeholder-polishing.jpg" alt="Rice Polishing">
                     <div class="step-content">
-                        <h3>4. Polishing</h3>
+                        <h3 class="animate-header">4. Polishing</h3>
                         <p>For our white rice varieties, we employ a precise polishing process that removes the bran layer while retaining essential nutrients.</p>
                     </div>
+                    <img src="placeholder-polishing.jpg" alt="Rice Polishing">
                 </div>
                 <div class="step">
                     <img src="placeholder-grading.jpg" alt="Rice Grading">
                     <div class="step-content">
-                        <h3>5. Grading and Sorting</h3>
+                        <h3 class="animate-header">5. Grading and Sorting</h3>
                         <p>Our advanced optical sorting technology ensures that only the highest quality grains make it into our final products, removing any imperfections.</p>
                     </div>
                 </div>
                 <div class="step">
-                    <img src="placeholder-packaging.jpg" alt="Rice Packaging">
                     <div class="step-content">
-                        <h3>6. Packaging</h3>
+                        <h3 class="animate-header">6. Packaging</h3>
                         <p>The final step involves packaging our rice in high-quality, airtight packages to maintain freshness and extend shelf life.</p>
                     </div>
+                    <img src="placeholder-packaging.jpg" alt="Rice Packaging">
                 </div>
             </div>
         </section>
 
         <section id="quality-control">
             <div class="container">
-                <h2>Quality Control</h2>
+                <h2 class="animate-header">Quality Control</h2>
                 <p>Throughout our milling process, we maintain rigorous quality control measures:</p>
                 <ul>
                     <li>Regular equipment calibration and maintenance</li>
@@ -103,7 +109,7 @@
 
         <section id="sustainability">
             <div class="container">
-                <h2>Our Commitment to Sustainability</h2>
+                <h2 class="animate-header">Our Commitment to Sustainability</h2>
                 <p>At Salman Rice Mill, we're dedicated to sustainable practices:</p>
                 <ul>
                     <li>Water conservation techniques in our fields</li>
