@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
 :root {
-    --primary-color: #3a5a40;  /* Dark green */
-    --secondary-color: #588157;  /* Medium green */
-    --accent-color: #a3b18a;  /* Light green */
-    --text-color: #344e41;  /* Dark green text */
-    --light-color: #dad7cd;  /* Light background */
+    --primary-color: #3a5a40;
+    --secondary-color: #588157;
+    --accent-color: #a3b18a;
+    --text-color: #344e41;
+    --light-color: #dad7cd;
     --white-color: #ffffff;
-    --gold-color: #d4af37;  /* Gold accent */
+    --gold-color: #d4af37;
     --transition: all 0.3s ease-in-out;
 }
 
@@ -20,6 +22,10 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
 }
 
 .container {
@@ -39,12 +45,13 @@ header {
 .top-nav {
     background-color: transparent;
     padding: 1rem 0;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .sticky-nav {
     background-color: var(--primary-color);
     padding: 0.5rem 0;
-    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-container {
@@ -84,7 +91,7 @@ header {
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--gold-color);
 }
 
 .menu-toggle {
@@ -155,7 +162,7 @@ header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
     color: var(--white-color);
     border: none;
     font-size: 2rem;
@@ -166,8 +173,7 @@ header {
     transition: opacity 0.3s ease;
 }
 
-.hero-section:hover .carousel-arrow,
-.hero-section:active .carousel-arrow {
+.hero-section:hover .carousel-arrow {
     opacity: 1;
 }
 
@@ -197,7 +203,7 @@ header {
     background: transparent;
     color: var(--white-color);
     padding: 0.8rem 1.5rem;
-    border: 2px solid var(--white-color);
+    border: 2px solid var(--gold-color);
     border-radius: 5px;
     font-size: 1rem;
     text-decoration: none;
@@ -205,6 +211,7 @@ header {
     position: relative;
     overflow: hidden;
     margin: 1rem 0;
+    text-align: center;
 }
 
 .btn::before {
@@ -230,7 +237,7 @@ header {
 }
 
 .btn:hover {
-    color: var(--gold-color);
+    transform: scale(1.05);
 }
 
 .btn:hover::before {
