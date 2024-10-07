@@ -59,6 +59,8 @@ function initializeHeroCarousel() {
         const leftArrow = carousel.querySelector('.carousel-arrow.left');
         const rightArrow = carousel.querySelector('.carousel-arrow.right');
         let currentIndex = 0;
+        let startX, moveX;
+        let isSwiping = false;
 
         function showItem(index) {
             container.style.transform = `translateX(-${index * 100}%)`;
@@ -77,8 +79,44 @@ function initializeHeroCarousel() {
         leftArrow.addEventListener('click', prevItem);
         rightArrow.addEventListener('click', nextItem);
 
-        // Auto-scroll
+        // New touch events for mobile swipe
+        container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isSwiping = true;
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            moveX = e.touches[0].clientX;
+            const diff = startX - moveX;
+            if (Math.abs(diff) > 50) { // Threshold for swipe
+                if (diff > 0) {
+                    nextItem();
+                } else {
+                    prevItem();
+                }
+                isSwiping = false;
+            }
+        });
+
+        container.addEventListener('touchend', () => {
+            isSwiping = false;
+        });
+
+        // Auto-scroll (existing code)
         setInterval(nextItem, 5000);
+
+        // New code to show arrows on touch for mobile devices
+        if ('ontouchstart' in window) {
+            carousel.addEventListener('touchstart', () => {
+                leftArrow.style.opacity = '0.7';
+                rightArrow.style.opacity = '0.7';
+                setTimeout(() => {
+                    leftArrow.style.opacity = '0';
+                    rightArrow.style.opacity = '0';
+                }, 3000);
+            });
+        }
     }
 }
 
