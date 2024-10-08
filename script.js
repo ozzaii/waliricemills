@@ -79,7 +79,7 @@ function initializeHeroCarousel() {
         leftArrow.addEventListener('click', prevItem);
         rightArrow.addEventListener('click', nextItem);
 
-        // New touch events for mobile swipe
+        // Touch events for mobile swipe
         container.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             isSwiping = true;
@@ -103,19 +103,22 @@ function initializeHeroCarousel() {
             isSwiping = false;
         });
 
-        // Auto-scroll (existing code)
+        // Auto-scroll
         setInterval(nextItem, 5000);
 
-        // New code to show arrows on touch for mobile devices
+        // Show arrows on touch or click for mobile devices
         if ('ontouchstart' in window) {
-            carousel.addEventListener('touchstart', () => {
-                leftArrow.style.opacity = '0.7';
-                rightArrow.style.opacity = '0.7';
-                setTimeout(() => {
-                    leftArrow.style.opacity = '0';
-                    rightArrow.style.opacity = '0';
-                }, 3000);
-            });
+            const heroSection = carousel.closest('.hero-section');
+            heroSection.addEventListener('touchstart', showArrows);
+            heroSection.addEventListener('click', showArrows);
+        }
+
+        function showArrows() {
+            const heroSection = carousel.closest('.hero-section');
+            heroSection.classList.add('arrows-visible');
+            setTimeout(() => {
+                heroSection.classList.remove('arrows-visible');
+            }, 3000);
         }
     }
 }
