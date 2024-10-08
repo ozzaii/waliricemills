@@ -127,12 +127,6 @@ function initializeAnimatedHeaders() {
     const animateHeaders = () => {
         const headers = document.querySelectorAll('.animate-header');
         headers.forEach(header => {
-            if (!header.querySelector('.wavy-lines')) {
-                const wavyLines = document.createElement('div');
-                wavyLines.classList.add('wavy-lines');
-                header.appendChild(wavyLines);
-            }
-
             const headerTop = header.getBoundingClientRect().top;
             const headerBottom = header.getBoundingClientRect().bottom;
             if (headerTop < window.innerHeight && headerBottom > 0) {
