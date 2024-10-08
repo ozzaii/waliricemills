@@ -22,7 +22,7 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(135deg, var(--light-color) 0%, #f0efeb 100%);
-    background-image: url('subtle-pattern.png');
+    background-image: url('https://raw.githubusercontent.com/ozzaii/waliricemills/main/pink_rice.png');
     background-repeat: repeat;
 }
 
