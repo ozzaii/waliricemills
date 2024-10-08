@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimatedHeaders();
     initializeContactForm();
     initializeFAQ();
+    initializeWavyLines();
 });
 
 function initializeNavbar() {
@@ -166,4 +167,26 @@ function initializeFAQ() {
             });
         });
     });
+}
+
+function initializeWavyLines() {
+    const wavyLines = document.querySelector('.wavy-lines');
+    const animateWavyLines = () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Calculate the scroll percentage
+        const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+        
+        // Start animating when user has scrolled 10% of the page
+        if (scrollPercentage > 10) {
+            wavyLines.classList.add('animate');
+        } else {
+            wavyLines.classList.remove('animate');
+        }
+    };
+
+    window.addEventListener('scroll', animateWavyLines);
+    animateWavyLines(); // Run once on load
 }
