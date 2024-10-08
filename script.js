@@ -26,6 +26,8 @@ function initializeNavbar() {
 
     menuToggle.addEventListener('click', () => {
         mobileMenu.classList.toggle('show');
+        // Toggle between hamburger and close icon
+        menuToggle.textContent = mobileMenu.classList.contains('show') ? '✕' : '☰';
         navLinks.forEach((link, index) => {
             if (mobileMenu.classList.contains('show')) {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
@@ -39,6 +41,7 @@ function initializeNavbar() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('show');
+            menuToggle.textContent = '☰'; // Reset to hamburger icon
             navLinks.forEach(link => {
                 link.style.animation = '';
             });

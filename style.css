@@ -90,6 +90,7 @@ header {
     color: var(--white-color);
     font-size: 1.5rem;
     cursor: pointer;
+    z-index: 1001; /* Ensure it's above the mobile menu */
 }
 
 .mobile-menu {
@@ -104,6 +105,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Ensure it's below the menu toggle */
 }
 
 .mobile-menu.show {
