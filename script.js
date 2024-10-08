@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimatedHeaders();
     initializeContactForm();
     initializeFAQ();
+
+    // Add this to your existing script.js file
+    initializeBackToTop();
+    initializeFadeInElements();
 });
 
 function initializeNavbar() {
@@ -165,5 +169,37 @@ function initializeFAQ() {
                 }
             });
         });
+    });
+}
+
+function initializeBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+function initializeFadeInElements() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(element => {
+        observer.observe(element);
     });
 }
