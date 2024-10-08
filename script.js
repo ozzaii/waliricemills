@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add this to your existing script.js file
     initializeBackToTop();
     initializeFadeInElements();
+    initializeScrollColorChange();
 });
 
 function initializeNavbar() {
@@ -201,5 +202,16 @@ function initializeFadeInElements() {
 
     fadeElements.forEach(element => {
         observer.observe(element);
+    });
+}
+
+function initializeScrollColorChange() {
+    const body = document.body;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+    window.addEventListener('scroll', () => {
+        const scrollPercentage = window.scrollY / maxScroll;
+        const hue = Math.round(scrollPercentage * 60); // Adjust the multiplier to change the color range
+        body.style.backgroundColor = `hsl(${hue}, 30%, 95%)`;
     });
 }
