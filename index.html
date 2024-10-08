@@ -9,7 +9,27 @@
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
+    <header>
+        <nav class="top-nav">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">
+                    <img src="path-to-your-logo.png" alt="Salman Rice Mill Logo" class="logo-img">
+                    Salman Rice Mill
+                </a>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Our Products</a></li>
+                <li><a href="process.html">Our Process</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
 
     <main>
         <section id="hero" class="hero-section">
@@ -19,7 +39,7 @@
                 <a href="#contact" class="btn">Get a Quote</a>
             </div>
             <div class="hero-carousel">
-                <button class="carousel-arrow left" aria-label="Previous slide">&lt;</button>
+                <button class="carousel-arrow left">&lt;</button>
                 <div class="carousel-container">
                     <div class="carousel-item">
                         <img src="placeholder-hero1.jpg" alt="Rice Fields">
@@ -28,93 +48,21 @@
                     </div>
                     <div class="carousel-item">
                         <img src="placeholder-hero2.jpg" alt="Rice Processing">
-                        <h3>Modern Milling</h3>
-                        <p>State-of-the-art processing facilities</p>
+                        <h3>Quality Process</h3>
+                        <p>State-of-the-art milling technology</p>
                     </div>
                     <div class="carousel-item">
-                        <img src="placeholder-hero3.jpg" alt="Rice Variety">
-                        <h3>Diverse Selection</h3>
-                        <p>From classic long grain to aromatic basmati</p>
+                        <img src="placeholder-hero3.jpg" alt="Packaged Rice">
+                        <h3>Premium Products</h3>
+                        <p>A variety of rice for every palate</p>
                     </div>
                 </div>
-                <button class="carousel-arrow right" aria-label="Next slide">&gt;</button>
+                <button class="carousel-arrow right">&gt;</button>
             </div>
         </section>
 
-        <section id="about">
-            <div class="container">
-                <h2 class="animate-header">About Salman Rice Mill</h2>
-                <p>Founded in 1980, Salman Rice Mill has been a cornerstone of quality rice production in Sheikhpura. Our commitment to excellence and sustainable farming practices ensure that every grain we produce meets the highest standards of quality.</p>
-                <a href="about.html" class="btn">Learn More About Us</a>
-            </div>
-        </section>
+        <!-- Add more sections as needed -->
 
-        <section id="products">
-            <div class="container">
-                <h2 class="animate-header">Our Products</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <img src="placeholder-rice1.jpg" alt="Premium Long Grain Rice">
-                        <h3>Premium Long Grain Rice</h3>
-                        <p>Perfect for pilafs and side dishes</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="placeholder-rice2.jpg" alt="Aromatic Basmati Rice">
-                        <h3>Aromatic Basmati Rice</h3>
-                        <p>Ideal for biryanis and special occasions</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="placeholder-rice3.jpg" alt="Whole Grain Brown Rice">
-                        <h3>Whole Grain Brown Rice</h3>
-                        <p>Nutritious option for health-conscious consumers</p>
-                    </div>
-                </div>
-                <a href="products.html" class="btn">Explore Our Full Range</a>
-            </div>
-        </section>
-
-        <section id="process-preview">
-            <div class="container">
-                <h2 class="animate-header">Our Milling Process</h2>
-                <p>We combine traditional techniques with modern technology to ensure the highest quality rice. Our process preserves the natural goodness of each grain while meeting the highest standards of cleanliness and efficiency.</p>
-                <a href="process.html" class="btn">Learn About Our Process</a>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2 class="animate-header">Contact Us</h2>
-                <div class="contact-wrapper">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                    <div class="contact-info">
-                        <h3>Our Location</h3>
-                        <p>Industrial Area, Sheikhpura, Punjab, Pakistan</p>
-                        <p>Phone: +92 123 456 7890</p>
-                        <p>Email: info@salmanricemill.com</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>

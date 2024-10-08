@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimatedHeaders();
     initializeContactForm();
     initializeFAQ();
-    improveKeyboardNavigation();
 });
 
 function initializeNavbar() {
@@ -106,21 +105,6 @@ function initializeHeroCarousel() {
 
         // Auto-scroll
         setInterval(nextItem, 5000);
-
-        // Show arrows on touch or click for mobile devices
-        if ('ontouchstart' in window) {
-            const heroSection = carousel.closest('.hero-section');
-            heroSection.addEventListener('touchstart', showArrows);
-            heroSection.addEventListener('click', showArrows);
-        }
-
-        function showArrows() {
-            const heroSection = carousel.closest('.hero-section');
-            heroSection.classList.add('arrows-visible');
-            setTimeout(() => {
-                heroSection.classList.remove('arrows-visible');
-            }, 3000);
-        }
     }
 }
 
@@ -167,48 +151,4 @@ function initializeFAQ() {
             });
         });
     });
-<<<<<<< HEAD
-=======
-}
-
-function improveKeyboardNavigation() {
-    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const modal = document.querySelector('.mobile-menu');
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab' || e.keyCode === 9) {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
-                    e.preventDefault();
-                }
-            }
-        }
-
-        if (e.key === 'Escape' || e.keyCode === 27) {
-            if (modal.classList.contains('show')) {
-                modal.classList.remove('show');
-            }
-        }
-    });
-
-    document.addEventListener('keyup', function(e) {
-        if (e.key === 'Tab' || e.keyCode === 9) {
-            const focusedElement = document.activeElement;
-            focusedElement.style.outline = '2px solid var(--gold-color)';
-        }
-    });
-
-    document.addEventListener('mousedown', function() {
-        const focusedElement = document.activeElement;
-        if (focusedElement) {
-            focusedElement.style.outline = 'none';
-        }
-    });
->>>>>>> 6bb5d31c110f9b0f37f056dc3d7477ceecaf6cd0
 }
