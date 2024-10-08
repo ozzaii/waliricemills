@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimatedHeaders();
     initializeContactForm();
     initializeFAQ();
+    improveKeyboardNavigation();
 });
 
 function initializeNavbar() {
@@ -165,5 +166,46 @@ function initializeFAQ() {
                 }
             });
         });
+    });
+}
+
+function improveKeyboardNavigation() {
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const modal = document.querySelector('.mobile-menu');
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab' || e.keyCode === 9) {
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastFocusableElement) {
+                    firstFocusableElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            if (modal.classList.contains('show')) {
+                modal.classList.remove('show');
+            }
+        }
+    });
+
+    document.addEventListener('keyup', function(e) {
+        if (e.key === 'Tab' || e.keyCode === 9) {
+            const focusedElement = document.activeElement;
+            focusedElement.style.outline = '2px solid var(--gold-color)';
+        }
+    });
+
+    document.addEventListener('mousedown', function() {
+        const focusedElement = document.activeElement;
+        if (focusedElement) {
+            focusedElement.style.outline = 'none';
+        }
     });
 }
