@@ -105,6 +105,21 @@ function initializeHeroCarousel() {
 
         // Auto-scroll
         setInterval(nextItem, 5000);
+
+        // Show arrows on touch or click for mobile devices
+        if ('ontouchstart' in window) {
+            const heroSection = carousel.closest('.hero-section');
+            heroSection.addEventListener('touchstart', showArrows);
+            heroSection.addEventListener('click', showArrows);
+        }
+
+        function showArrows() {
+            const heroSection = carousel.closest('.hero-section');
+            heroSection.classList.add('arrows-visible');
+            setTimeout(() => {
+                heroSection.classList.remove('arrows-visible');
+            }, 3000);
+        }
     }
 }
 
