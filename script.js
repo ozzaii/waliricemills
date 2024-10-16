@@ -320,7 +320,7 @@ function calculateBulkRice(eventType, guestCount, riceType) {
 function displayPersonalResult(result) {
     const resultDiv = document.getElementById('personalCalculatorResult');
     resultDiv.innerHTML = `
-        <p>You need approximately:</p>
+        <p><i class="fas fa-check-circle"></i> You need approximately:</p>
         <p><strong>${result.grams} grams</strong> or <strong>${result.cups} cups</strong> of uncooked rice.</p>
     `;
 }
@@ -328,9 +328,9 @@ function displayPersonalResult(result) {
 function displayBulkResult(result) {
     const resultDiv = document.getElementById('bulkCalculatorResult');
     resultDiv.innerHTML = `
-        <p>For your event, you'll need approximately:</p>
+        <p><i class="fas fa-check-circle"></i> For your event, you'll need approximately:</p>
         <p><strong>${result.kilos} kilograms</strong> of uncooked rice.</p>
-        <p>We recommend contacting us for a personalized quote for bulk orders.</p>
+        <p><i class="fas fa-info-circle"></i> We recommend contacting us for a personalized quote for bulk orders.</p>
     `;
 }
 
