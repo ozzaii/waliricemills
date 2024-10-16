@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFAQ();
 
     // Add this to your existing script.js file
+    initializeParallax();
+    initializeFadeIn();
+    initializeCustomCursor();
+    initializeDarkMode();
     initializeBackToTop();
-    initializeFadeInElements();
-    initializeScrollColorChange();
 });
 
 function initializeNavbar() {
@@ -176,25 +178,15 @@ function initializeFAQ() {
     });
 }
 
-function initializeBackToTop() {
-    const backToTopButton = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+function initializeParallax() {
+    const heroSections = document.querySelectorAll('.hero-section');
+    heroSections.forEach(section => {
+        section.style.backgroundImage = `url('${section.dataset.background}')`;
     });
 }
 
-function initializeFadeInElements() {
+function initializeFadeIn() {
     const fadeElements = document.querySelectorAll('.fade-in');
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -208,13 +200,43 @@ function initializeFadeInElements() {
     });
 }
 
-function initializeScrollColorChange() {
-    const body = document.body;
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+function initializeCustomCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+}
+
+function initializeDarkMode() {
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.id = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '🌓';
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+}
+
+function initializeBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
 
     window.addEventListener('scroll', () => {
-        const scrollPercentage = window.scrollY / maxScroll;
-        const hue = Math.round(scrollPercentage * 60); // Adjust the multiplier to change the color range
-        body.style.backgroundColor = `hsl(${hue}, 30%, 95%)`;
+        if (window.pageYOffset > 100) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
