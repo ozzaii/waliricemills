@@ -766,28 +766,49 @@ footer {
 }
 
 /* Rice Calculator Styles */
+.calculator-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: var(--light-color);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
 .calculator-form {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: var(--light-color);
+    background-color: var(--white-color);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .calculator-form h2 {
-    margin-bottom: 1rem;
     color: var(--primary-color);
+    margin-bottom: 1.5rem;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     color: var(--text-color);
+    font-weight: bold;
 }
 
 .form-group input,
@@ -796,14 +817,39 @@ footer {
     padding: 0.5rem;
     border: 1px solid var(--accent-color);
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 .calculator-result {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding: 1rem;
-    background-color: var(--accent-color);
+    background-color: var(--light-color);
     border-radius: 4px;
-    color: var(--white-color);
+    font-weight: bold;
+}
+
+#calculator-tips {
+    background-color: var(--light-color);
+    padding: 3rem 0;
+    margin-top: 3rem;
+}
+
+.tips-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.tips-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tips-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
 }
 
 /* Recipe Styles */

@@ -257,34 +257,80 @@ function initializeBackToTop() {
 }
 
 function initializeRiceCalculator() {
-    const calculatorForm = document.getElementById('riceCalculatorForm');
-    if (calculatorForm) {
-        calculatorForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const people = document.getElementById('numberOfPeople').value;
-            const riceType = document.getElementById('riceType').value;
-            const result = calculateRice(people, riceType);
-            displayResult(result);
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const calculatorForms = document.querySelectorAll('.calculator-form');
+    const personalForm = document.getElementById('personalRiceCalculatorForm');
+    const bulkForm = document.getElementById('bulkRiceCalculatorForm');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            calculatorForms.forEach(form => {
+                form.style.display = form.id === `${btn.dataset.tab}-calculator` ? 'block' : 'none';
+            });
         });
+    });
+
+    personalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const people = document.getElementById('numberOfPeople').value;
+        const mealType = document.getElementById('mealType').value;
+        const riceType = document.getElementById('riceType').value;
+        const result = calculatePersonalRice(people, mealType, riceType);
+        displayPersonalResult(result);
+    });
+
+    bulkForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const eventType = document.getElementById('eventType').value;
+        const guestCount = document.getElementById('guestCount').value;
+        const riceType = document.getElementById('bulkRiceType').value;
+        const result = calculateBulkRice(eventType, guestCount, riceType);
+        displayBulkResult(result);
+    });
+}
+
+function calculatePersonalRice(people, mealType, riceType) {
+    const baseServing = mealType === 'main' ? 75 : 50; // grams per person
+    let totalGrams = people * baseServing;
+    
+    if (riceType === 'brown') totalGrams *= 1.2; // Brown rice requires more
+    
+    const cups = (totalGrams / 180).toFixed(2); // 1 cup ≈ 180g of uncooked rice
+    return { grams: totalGrams, cups: cups };
+}
+
+function calculateBulkRice(eventType, guestCount, riceType) {
+    let baseServing;
+    switch(eventType) {
+        case 'wedding': baseServing = 100; break;
+        case 'corporate': baseServing = 80; break;
+        case 'restaurant': baseServing = 90; break;
+        default: baseServing = 85;
     }
+    
+    let totalKilos = (guestCount * baseServing) / 1000; // Convert to kilos
+    
+    if (riceType === 'parboiled') totalKilos *= 0.9; // Parboiled rice expands more
+    
+    return { kilos: totalKilos.toFixed(2) };
 }
 
-function calculateRice(people, riceType) {
-    const servingSize = {
-        'basmati': 60,
-        'long-grain': 75,
-        'brown': 75
-    };
-    const grams = people * servingSize[riceType];
-    const cups = (grams / 180).toFixed(2);
-    return { grams, cups };
-}
-
-function displayResult(result) {
-    const resultDiv = document.getElementById('calculatorResult');
+function displayPersonalResult(result) {
+    const resultDiv = document.getElementById('personalCalculatorResult');
     resultDiv.innerHTML = `
         <p>You need approximately:</p>
-        <p><strong>${result.grams} grams</strong> or <strong>${result.cups} cups</strong> of rice.</p>
+        <p><strong>${result.grams} grams</strong> or <strong>${result.cups} cups</strong> of uncooked rice.</p>
+    `;
+}
+
+function displayBulkResult(result) {
+    const resultDiv = document.getElementById('bulkCalculatorResult');
+    resultDiv.innerHTML = `
+        <p>For your event, you'll need approximately:</p>
+        <p><strong>${result.kilos} kilograms</strong> of uncooked rice.</p>
+        <p>We recommend contacting us for a personalized quote for bulk orders.</p>
     `;
 }
 
