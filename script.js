@@ -191,11 +191,16 @@ function initializeFadeIn() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                entry.target.classList.remove('hidden');
+            } else {
+                entry.target.classList.remove('visible');
+                entry.target.classList.add('hidden');
             }
         });
     }, { threshold: 0.1 });
 
     fadeElements.forEach(element => {
+        element.classList.add('hidden');
         observer.observe(element);
     });
 }

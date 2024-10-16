@@ -577,6 +577,11 @@ footer {
     transform: translateY(0);
 }
 
+.fade-in.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
