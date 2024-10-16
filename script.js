@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCustomCursor();
     initializeDarkMode();
     initializeBackToTop();
+
+    initializeRiceCalculator();
+    initializeRecipeCategories();
 });
 
 function initializeNavbar() {
@@ -251,4 +254,58 @@ function initializeBackToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+}
+
+function initializeRiceCalculator() {
+    const calculatorForm = document.getElementById('riceCalculatorForm');
+    if (calculatorForm) {
+        calculatorForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const people = document.getElementById('numberOfPeople').value;
+            const riceType = document.getElementById('riceType').value;
+            const result = calculateRice(people, riceType);
+            displayResult(result);
+        });
+    }
+}
+
+function calculateRice(people, riceType) {
+    const servingSize = {
+        'basmati': 60,
+        'long-grain': 75,
+        'brown': 75
+    };
+    const grams = people * servingSize[riceType];
+    const cups = (grams / 180).toFixed(2);
+    return { grams, cups };
+}
+
+function displayResult(result) {
+    const resultDiv = document.getElementById('calculatorResult');
+    resultDiv.innerHTML = `
+        <p>You need approximately:</p>
+        <p><strong>${result.grams} grams</strong> or <strong>${result.cups} cups</strong> of rice.</p>
+    `;
+}
+
+function initializeRecipeCategories() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const recipeCards = document.querySelectorAll('.recipe-card');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            recipeCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 }

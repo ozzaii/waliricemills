@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Recipes - Salman Rice Mill</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <section id="recipes-hero" class="hero-section">
+            <div class="container">
+                <h1 class="animate-header fade-in">Delightful Rice Recipes</h1>
+                <p class="fade-in">Explore culinary wonders with our premium rice</p>
+            </div>
+        </section>
+
+        <section id="recipe-categories" class="fade-in">
+            <div class="container">
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all">All Recipes</button>
+                    <button class="category-btn" data-category="main-course">Main Course</button>
+                    <button class="category-btn" data-category="side-dish">Side Dish</button>
+                    <button class="category-btn" data-category="dessert">Dessert</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-recipe" class="fade-in">
+            <div class="container">
+                <h2>Featured Recipe</h2>
+                <div class="featured-recipe-card">
+                    <img src="placeholder-biryani.jpg" alt="Chicken Biryani">
+                    <div class="featured-recipe-content">
+                        <h3>Aromatic Chicken Biryani</h3>
+                        <p class="recipe-description">A flavorful and aromatic rice dish with tender chicken pieces, fragrant spices, and caramelized onions.</p>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock"></i> 60 mins</span>
+                            <span><i class="fas fa-user-friends"></i> Serves 4</span>
+                            <span><i class="fas fa-star"></i> 4.8 (256 reviews)</span>
+                        </div>
+                        <a href="#" class="btn">View Full Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recipe-grid">
+            <div class="container">
+                <h2 class="fade-in">Explore Our Recipes</h2>
+                <div class="recipe-grid">
+                    <div class="recipe-card fade-in" data-category="main-course">
+                        <img src="placeholder-risotto.jpg" alt="Mushroom Risotto">
+                        <div class="recipe-content">
+                            <h3>Creamy Mushroom Risotto</h3>
+                            <p>A luxurious Italian rice dish with savory mushrooms and Parmesan cheese.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 40 mins</span>
+                                <span><i class="fas fa-user-friends"></i> Serves 2</span>
+                            </div>
+                            <a href="#" class="btn">View Recipe</a>
+                        </div>
+                    </div>
+                    <div class="recipe-card fade-in" data-category="side-dish">
+                        <img src="placeholder-pilaf.jpg" alt="Vegetable Pilaf">
+                        <div class="recipe-content">
+                            <h3>Colorful Vegetable Pilaf</h3>
+                            <p>A vibrant and nutritious rice dish packed with seasonal vegetables.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 30 mins</span>
+                                <span><i class="fas fa-user-friends"></i> Serves 4</span>
+                            </div>
+                            <a href="#" class="btn">View Recipe</a>
+                        </div>
+                    </div>
+                    <div class="recipe-card fade-in" data-category="dessert">
+                        <img src="placeholder-pudding.jpg" alt="Rice Pudding">
+                        <div class="recipe-content">
+                            <h3>Creamy Rice Pudding</h3>
+                            <p>A comforting dessert with a hint of vanilla and cinnamon.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 45 mins</span>
+                                <span><i class="fas fa-user-friends"></i> Serves 6</span>
+                            </div>
+                            <a href="#" class="btn">View Recipe</a>
+                        </div>
+                    </div>
+                    <!-- Add more recipe cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="recipe-tips" class="fade-in">
+            <div class="container">
+                <h2>Rice Cooking Tips</h2>
+                <ul class="tips-list">
+                    <li>Always rinse your rice before cooking to remove excess starch.</li>
+                    <li>Use the right water-to-rice ratio for perfect texture.</li>
+                    <li>Let the rice rest after cooking for fluffy results.</li>
+                    <li>Experiment with different rice varieties for unique flavors and textures.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Salman Rice Mill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <button id="back-to-top" aria-label="Back to top">↑</button>
+    <div id="custom-cursor"></div>
+</body>
+</html>
+
