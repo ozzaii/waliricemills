@@ -23,6 +23,7 @@ body {
     color: var(--text-color);
     background-image: url('https://raw.githubusercontent.com/ozzaii/waliricemills/main/pink_rice.png');
     background-repeat: repeat;
+    background-attachment: fixed; /* This ensures the background stays fixed while scrolling */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -162,7 +163,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     z-index: 1;
 }
 
@@ -1149,4 +1150,69 @@ footer {
 
 .carousel-arrow.right {
     right: 1rem;
+}
+
+/* Remove any background colors from main sections to let the background image show through */
+main, #calculator-content, #calculator-tips {
+    background-color: transparent;
+}
+
+/* Update the calculator form and tips section to have a semi-transparent background */
+.calculator-form, #calculator-tips .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Ensure the hero section text is readable against the background */
+.hero-section {
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Adjust the hero carousel to fit the new background */
+.hero-carousel {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem 0;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+/* Make sure the text in the calculator is readable */
+.calculator-form h2,
+.calculator-form label,
+.calculator-result,
+#calculator-tips h2,
+.tips-list li {
+    color: var(--text-color);
+}
+
+/* Ensure buttons and interactive elements stand out */
+.tab-btn,
+.calculate-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+}
+
+.tab-btn.active,
+.calculate-btn:hover {
+    background-color: var(--secondary-color);
 }
