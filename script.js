@@ -168,12 +168,17 @@ function initializeFAQ() {
     faqItems.forEach(item => {
         const question = item.querySelector('h3');
         question.addEventListener('click', () => {
-            item.classList.toggle('active');
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
             faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
+                otherItem.classList.remove('active');
             });
+
+            // If the clicked item wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+            }
         });
     });
 }
