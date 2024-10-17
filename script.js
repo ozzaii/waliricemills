@@ -67,16 +67,14 @@ function initializeNavbar() {
 function initializeHeroCarousel() {
     const carousel = document.querySelector('.hero-carousel');
     if (carousel) {
-        const container = carousel.querySelector('.carousel-container');
         const items = carousel.querySelectorAll('.carousel-item');
         const leftArrow = carousel.querySelector('.carousel-arrow.left');
         const rightArrow = carousel.querySelector('.carousel-arrow.right');
         let currentIndex = 0;
-        let startX, moveX;
-        let isSwiping = false;
 
         function showItem(index) {
-            container.style.transform = `translateX(-${index * 100}%)`;
+            items.forEach(item => item.classList.remove('active'));
+            items[index].classList.add('active');
         }
 
         function nextItem() {
@@ -92,46 +90,8 @@ function initializeHeroCarousel() {
         leftArrow.addEventListener('click', prevItem);
         rightArrow.addEventListener('click', nextItem);
 
-        // Touch events for mobile swipe
-        container.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isSwiping = true;
-        });
-
-        container.addEventListener('touchmove', (e) => {
-            if (!isSwiping) return;
-            moveX = e.touches[0].clientX;
-            const diff = startX - moveX;
-            if (Math.abs(diff) > 50) { // Threshold for swipe
-                if (diff > 0) {
-                    nextItem();
-                } else {
-                    prevItem();
-                }
-                isSwiping = false;
-            }
-        });
-        container.addEventListener('touchend', () => {
-            isSwiping = false;
-        });
-
         // Auto-scroll
         setInterval(nextItem, 5000);
-
-        // Show arrows on touch or click for mobile devices
-        if ('ontouchstart' in window) {
-            const heroSection = carousel.closest('.hero-section');
-            heroSection.addEventListener('touchstart', showArrows);
-            heroSection.addEventListener('click', showArrows);
-        }
-
-        function showArrows() {
-            const heroSection = carousel.closest('.hero-section');
-            heroSection.classList.add('arrows-visible');
-            setTimeout(() => {
-                heroSection.classList.remove('arrows-visible');
-            }, 3000);
-        }
     }
 }
 
@@ -354,3 +314,6 @@ function initializeRecipeCategories() {
         });
     });
 }
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
