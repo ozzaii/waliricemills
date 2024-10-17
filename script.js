@@ -9,15 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize other components
     initializeHeroCarousel();
-    initializeAnimatedHeaders();
     initializeContactForm();
     initializeFAQ();
-
-    // Add this to your existing script.js file
-    initializeParallax();
     initializeFadeIn();
-    initializeCustomCursor();
-    initializeDarkMode();
     initializeBackToTop();
 
     initializeRiceCalculator();
