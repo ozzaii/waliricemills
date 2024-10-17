@@ -85,7 +85,11 @@ function initializeHeroCarousel() {
         rightArrow.addEventListener('click', nextItem);
 
         // Auto-scroll
-        setInterval(nextItem, 5000);
+        let intervalId = setInterval(nextItem, 5000);
+
+        // Pause auto-scroll on hover
+        carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
+        carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
     }
 }
 
