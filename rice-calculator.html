@@ -14,10 +14,10 @@
     <main>
         <section id="calculator-hero" class="hero-section fade-in">
             <div class="hero-content">
-                <h1 class="animate-header fade-in">Rice Calculator</h1>
+                <h1 class="fade-in">Rice Calculator</h1>
                 <p class="fade-in">Determine the perfect amount of rice for your needs</p>
             </div>
-            <div class="hero-carousel">
+            <div class="hero-carousel fade-in">
                 <button class="carousel-arrow left">&lt;</button>
                 <div class="carousel-container">
                     <div class="carousel-item active">
@@ -36,76 +36,79 @@
 
         <section id="calculator-content" class="fade-in">
             <div class="container">
-                <div class="calculator-tabs fade-in">
-                    <button class="tab-btn active" data-tab="personal">
-                        <i class="fas fa-user"></i> Personal Use
-                    </button>
-                    <button class="tab-btn" data-tab="bulk">
-                        <i class="fas fa-warehouse"></i> Bulk Orders
-                    </button>
-                </div>
-                
-                <div id="personal-calculator" class="calculator-form fade-in">
-                    <h2><i class="fas fa-calculator"></i> Personal Rice Calculator</h2>
-                    <form id="personalRiceCalculatorForm">
-                        <div class="form-group">
-                            <label for="numberOfPeople"><i class="fas fa-users"></i> Number of People:</label>
-                            <input type="number" id="numberOfPeople" min="1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mealType"><i class="fas fa-utensils"></i> Meal Type:</label>
-                            <select id="mealType" required>
-                                <option value="main">Main Course</option>
-                                <option value="side">Side Dish</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="riceType"><i class="fas fa-seedling"></i> Rice Type:</label>
-                            <select id="riceType" required>
-                                <option value="basmati">Basmati Rice</option>
-                                <option value="long-grain">Long Grain Rice</option>
-                                <option value="brown">Brown Rice</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn calculate-btn"><i class="fas fa-calculator"></i> Calculate</button>
-                    </form>
-                    <div id="personalCalculatorResult" class="calculator-result"></div>
-                </div>
+                <h2 class="fade-in">Rice Calculator</h2>
+                <form id="rice-calculator" class="fade-in">
+                    <div class="calculator-tabs fade-in">
+                        <button class="tab-btn active" data-tab="personal">
+                            <i class="fas fa-user"></i> Personal Use
+                        </button>
+                        <button class="tab-btn" data-tab="bulk">
+                            <i class="fas fa-warehouse"></i> Bulk Orders
+                        </button>
+                    </div>
+                    
+                    <div id="personal-calculator" class="calculator-form fade-in">
+                        <h2><i class="fas fa-calculator"></i> Personal Rice Calculator</h2>
+                        <form id="personalRiceCalculatorForm">
+                            <div class="form-group">
+                                <label for="numberOfPeople"><i class="fas fa-users"></i> Number of People:</label>
+                                <input type="number" id="numberOfPeople" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mealType"><i class="fas fa-utensils"></i> Meal Type:</label>
+                                <select id="mealType" required>
+                                    <option value="main">Main Course</option>
+                                    <option value="side">Side Dish</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="riceType"><i class="fas fa-seedling"></i> Rice Type:</label>
+                                <select id="riceType" required>
+                                    <option value="basmati">Basmati Rice</option>
+                                    <option value="long-grain">Long Grain Rice</option>
+                                    <option value="brown">Brown Rice</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn calculate-btn"><i class="fas fa-calculator"></i> Calculate</button>
+                        </form>
+                        <div id="personalCalculatorResult" class="calculator-result"></div>
+                    </div>
 
-                <div id="bulk-calculator" class="calculator-form fade-in" style="display: none;">
-                    <h2><i class="fas fa-calculator"></i> Bulk Order Rice Calculator</h2>
-                    <form id="bulkRiceCalculatorForm">
-                        <div class="form-group">
-                            <label for="eventType"><i class="fas fa-calendar-alt"></i> Event Type:</label>
-                            <select id="eventType" required>
-                                <option value="wedding">Wedding</option>
-                                <option value="corporate">Corporate Event</option>
-                                <option value="restaurant">Restaurant Supply</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="guestCount"><i class="fas fa-users"></i> Number of Guests/Servings:</label>
-                            <input type="number" id="guestCount" min="50" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bulkRiceType"><i class="fas fa-seedling"></i> Rice Type:</label>
-                            <select id="bulkRiceType" required>
-                                <option value="basmati">Premium Basmati Rice</option>
-                                <option value="long-grain">Long Grain Rice</option>
-                                <option value="parboiled">Parboiled Rice</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn calculate-btn"><i class="fas fa-calculator"></i> Calculate Bulk Order</button>
-                    </form>
-                    <div id="bulkCalculatorResult" class="calculator-result"></div>
-                </div>
+                    <div id="bulk-calculator" class="calculator-form fade-in" style="display: none;">
+                        <h2><i class="fas fa-calculator"></i> Bulk Order Rice Calculator</h2>
+                        <form id="bulkRiceCalculatorForm">
+                            <div class="form-group">
+                                <label for="eventType"><i class="fas fa-calendar-alt"></i> Event Type:</label>
+                                <select id="eventType" required>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="restaurant">Restaurant Supply</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestCount"><i class="fas fa-users"></i> Number of Guests/Servings:</label>
+                                <input type="number" id="guestCount" min="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bulkRiceType"><i class="fas fa-seedling"></i> Rice Type:</label>
+                                <select id="bulkRiceType" required>
+                                    <option value="basmati">Premium Basmati Rice</option>
+                                    <option value="long-grain">Long Grain Rice</option>
+                                    <option value="parboiled">Parboiled Rice</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn calculate-btn"><i class="fas fa-calculator"></i> Calculate Bulk Order</button>
+                        </form>
+                        <div id="bulkCalculatorResult" class="calculator-result"></div>
+                    </div>
+                </form>
             </div>
         </section>
 
         <section id="calculator-tips" class="fade-in">
             <div class="container">
-                <h2><i class="fas fa-lightbulb"></i> Rice Measurement Tips</h2>
-                <ul class="tips-list">
+                <h2 class="fade-in">Rice Cooking Tips</h2>
+                <ul class="fade-in">
                     <li>Use a standard measuring cup for accuracy</li>
                     <li>1 cup of uncooked rice typically yields 3 cups of cooked rice</li>
                     <li>For softer rice, add slightly more water</li>
