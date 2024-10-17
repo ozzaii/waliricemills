@@ -311,3 +311,21 @@ function initializeRecipeCategories() {
 
 // Call the function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
+
+// Add this to the end of your existing script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.hero-carousel');
+    
+    carousels.forEach(carousel => {
+        const items = carousel.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        
+        function showNextSlide() {
+            items[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % items.length;
+            items[currentIndex].classList.add('active');
+        }
+        
+        setInterval(showNextSlide, 4000); // Change slide every 5 seconds
+    });
+});
