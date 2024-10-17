@@ -802,6 +802,10 @@ footer {
 @media (max-width: 767px) {
     .certificate-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .certificate-card {
+        margin-bottom: 2rem;
     }
 }
 
