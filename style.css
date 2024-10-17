@@ -1229,3 +1229,93 @@ main, #calculator-content, #calculator-tips {
 .calculate-btn:hover {
     background-color: var(--secondary-color);
 }
+
+/* Remove any background colors from main sections to let the background image show through */
+main, #featured-recipe, #recipe-grid, #recipe-tips {
+    background-color: transparent;
+}
+
+/* Update the featured recipe, recipe grid, and tips sections to have a semi-transparent background */
+.featured-recipe-card, .recipe-card, #recipe-tips .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Ensure the hero section text is readable against the background */
+.hero-section {
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Adjust the hero carousel to fit the new background */
+.hero-carousel {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem 0;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+/* Style the featured recipe card */
+.featured-recipe-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.featured-recipe-card img {
+    width: 40%;
+    border-radius: 8px;
+}
+
+.featured-recipe-content {
+    flex: 1;
+}
+
+/* Style the recipe tips list */
+.tips-list {
+    list-style-type: none;
+    padding-left: 1.5rem;
+}
+
+.tips-list li {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.tips-list li::before {
+    content: '✓';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .featured-recipe-card {
+        flex-direction: column;
+    }
+
+    .featured-recipe-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+}
