@@ -139,21 +139,11 @@ header {
 
 /* Hero Section Styles */
 .hero-section {
+    position: relative;
     height: 70vh;
     min-height: 400px;
     max-height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--white-color);
-    position: relative;
     overflow: hidden;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .hero-section::before {
@@ -163,13 +153,16 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
 .hero-section .container {
     position: relative;
     z-index: 2;
+    color: var(--white-color);
+    text-align: center;
+    padding-top: 2rem;
 }
 
 .hero-carousel {
@@ -178,7 +171,6 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 .carousel-container {
@@ -190,6 +182,7 @@ header {
 .carousel-item {
     flex: 0 0 100%;
     height: 100%;
+    position: relative;
 }
 
 .carousel-item img {
@@ -197,6 +190,28 @@ header {
     height: 100%;
     object-fit: cover;
 }
+
+.carousel-item h3,
+.carousel-item p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+}
+
+.carousel-item h3 {
+    bottom: 100px;
+    font-size: 2rem;
+}
+
+.carousel-item p {
+    bottom: 60px;
+    font-size: 1.2rem;
+}
+
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -208,7 +223,6 @@ header {
     padding: 0.5rem 0.7rem;
     cursor: pointer;
     z-index: 3;
-    opacity: 0;
     transition: all 0.3s ease;
     border-radius: 50%;
     backdrop-filter: blur(5px);
@@ -216,7 +230,6 @@ header {
 
 .carousel-arrow:hover {
     background: rgba(255, 255, 255, 0.5);
-    opacity: 1;
 }
 
 .carousel-arrow.left {

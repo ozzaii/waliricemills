@@ -111,7 +111,6 @@ function initializeHeroCarousel() {
                 isSwiping = false;
             }
         });
-
         container.addEventListener('touchend', () => {
             isSwiping = false;
         });
