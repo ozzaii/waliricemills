@@ -59,8 +59,9 @@ function initializeNavbar() {
 }
 
 function initializeHeroCarousel() {
-    const carousel = document.querySelector('.hero-carousel');
-    if (carousel) {
+    const carousels = document.querySelectorAll('.hero-carousel');
+    
+    carousels.forEach(carousel => {
         const items = carousel.querySelectorAll('.carousel-item');
         const leftArrow = carousel.querySelector('.carousel-arrow.left');
         const rightArrow = carousel.querySelector('.carousel-arrow.right');
@@ -90,7 +91,7 @@ function initializeHeroCarousel() {
         // Pause auto-scroll on hover
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
-    }
+    });
 }
 
 function initializeAnimatedHeaders() {
