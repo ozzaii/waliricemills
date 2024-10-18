@@ -70,6 +70,7 @@ function initializeHeroCarousel() {
         function showItem(index) {
             items.forEach(item => item.classList.remove('active'));
             items[index].classList.add('active');
+            adjustImagePosition(items[index].querySelector('img'));
         }
 
         function nextItem() {
@@ -82,6 +83,15 @@ function initializeHeroCarousel() {
             showItem(currentIndex);
         }
 
+        function adjustImagePosition(img) {
+            if (img.naturalWidth / img.naturalHeight > img.width / img.height) {
+                img.style.objectPosition = 'center center';
+            } else {
+                const yPosition = (1 - (img.width / img.height) / (img.naturalWidth / img.naturalHeight)) * 50;
+                img.style.objectPosition = `center ${yPosition}%`;
+            }
+        }
+
         leftArrow.addEventListener('click', prevItem);
         rightArrow.addEventListener('click', nextItem);
 
@@ -92,7 +102,13 @@ function initializeHeroCarousel() {
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
 
-        // Ensure first image is displayed
+        // Adjust all images on load
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            img.addEventListener('load', () => adjustImagePosition(img));
+        });
+
+        // Ensure first image is displayed and adjusted
         showItem(currentIndex);
     });
 }
@@ -320,20 +336,8 @@ function initializeRecipeCategories() {
 // Call the function when the DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
 
-// Add this to the end of your existing script.js file
-document.addEventListener('DOMContentLoaded', function() {
-    const carousels = document.querySelectorAll('.hero-carousel');
-    
-    carousels.forEach(carousel => {
-        const items = carousel.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-        
-        function showNextSlide() {
-            items[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % items.length;
-            items[currentIndex].classList.add('active');
-        }
-        
-        setInterval(showNextSlide, 4000); // Change slide every 5 seconds
-    });
+// Adjust images on window resize
+window.addEventListener('resize', () => {
+    const activeItems = document.querySelectorAll('.carousel-item.active img');
+    activeItems.forEach(adjustImagePosition);
 });
