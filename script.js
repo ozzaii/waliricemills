@@ -91,6 +91,9 @@ function initializeHeroCarousel() {
         // Pause auto-scroll on hover
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
+
+        // Ensure first image is displayed
+        showItem(currentIndex);
     });
 }
 
