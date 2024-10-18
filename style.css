@@ -182,6 +182,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center; /* Center the image */
 }
 
 .hero-content {
@@ -193,26 +194,18 @@ header {
     z-index: 2;
     width: 90%;
     max-width: 800px;
-    /* Remove background color */
-    background-color: transparent;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    /* Set color to primary theme color */
-    color: var(--primary-color);
-    /* Add text shadow for better visibility */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    /* Set color to primary theme color */
-    color: var(--primary-color);
-    /* Add text shadow for better visibility */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 .carousel-arrow {
@@ -242,26 +235,33 @@ header {
     right: 1rem;
 }
 
+/* Mobile-specific styles */
 @media (max-width: 768px) {
     .hero-section {
-        height: 50vh;
+        height: 50vh; /* Reduce height on mobile */
     }
 
     .carousel-item img {
-        object-position: center;
+        object-position: center 20%; /* Adjust vertical position */
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .hero-content p {
-        font-size: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .hero-content h1 {
+        font-size: 3rem;
     }
 
-    .carousel-arrow {
+    .hero-content p {
         font-size: 1.5rem;
-        padding: 0.3rem 0.8rem;
     }
 }
 
