@@ -68,12 +68,8 @@ function initializeHeroCarousel() {
         let currentIndex = 0;
 
         function showItem(index) {
-            items.forEach(item => {
-                item.style.opacity = 0;
-                item.style.zIndex = 0;
-            });
-            items[index].style.opacity = 1;
-            items[index].style.zIndex = 1;
+            items.forEach(item => item.classList.remove('active'));
+            items[index].classList.add('active');
         }
 
         function nextItem() {
@@ -95,16 +91,6 @@ function initializeHeroCarousel() {
         // Pause auto-scroll on hover
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
-
-        // Preload images
-        items.forEach(item => {
-            const img = item.querySelector('img');
-            if (img) {
-                const src = img.getAttribute('src');
-                const preloadImg = new Image();
-                preloadImg.src = src;
-            }
-        });
     });
 }
 
