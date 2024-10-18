@@ -70,7 +70,6 @@ function initializeHeroCarousel() {
         function showItem(index) {
             items.forEach(item => item.classList.remove('active'));
             items[index].classList.add('active');
-            adjustImagePosition(items[index].querySelector('img'));
         }
 
         function nextItem() {
@@ -83,26 +82,6 @@ function initializeHeroCarousel() {
             showItem(currentIndex);
         }
 
-        function adjustImagePosition(img) {
-            const container = img.closest('.carousel-item');
-            const containerAspect = container.offsetWidth / container.offsetHeight;
-            const imgAspect = img.naturalWidth / img.naturalHeight;
-
-            if (imgAspect > containerAspect) {
-                img.style.width = '100%';
-                img.style.height = 'auto';
-                img.style.top = '50%';
-                img.style.left = '0';
-                img.style.transform = 'translateY(-50%)';
-            } else {
-                img.style.width = 'auto';
-                img.style.height = '100%';
-                img.style.top = '0';
-                img.style.left = '50%';
-                img.style.transform = 'translateX(-50%)';
-            }
-        }
-
         leftArrow.addEventListener('click', prevItem);
         rightArrow.addEventListener('click', nextItem);
 
@@ -113,18 +92,12 @@ function initializeHeroCarousel() {
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
 
-        // Adjust all images on load
-        items.forEach(item => {
-            const img = item.querySelector('img');
-            img.addEventListener('load', () => adjustImagePosition(img));
-        });
-
-        // Ensure first image is displayed and adjusted
+        // Ensure first image is displayed
         showItem(currentIndex);
 
         // Adjust images on window resize
         window.addEventListener('resize', () => {
-            adjustImagePosition(items[currentIndex].querySelector('img'));
+            showItem(currentIndex);
         });
     });
 }
