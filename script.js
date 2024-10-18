@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFAQ();
     initializeFadeIn();
     initializeBackToTop();
+
     initializeRiceCalculator();
     initializeRecipeCategories();
 });
@@ -59,7 +60,7 @@ function initializeNavbar() {
 
 function initializeHeroCarousel() {
     const carousels = document.querySelectorAll('.hero-carousel');
-
+    
     carousels.forEach(carousel => {
         const items = carousel.querySelectorAll('.carousel-item');
         const leftArrow = carousel.querySelector('.carousel-arrow.left');
@@ -69,6 +70,7 @@ function initializeHeroCarousel() {
         function showItem(index) {
             items.forEach(item => item.classList.remove('active'));
             items[index].classList.add('active');
+            adjustImagePosition(items[index].querySelector('img'));
         }
 
         function nextItem() {
@@ -81,15 +83,28 @@ function initializeHeroCarousel() {
             showItem(currentIndex);
         }
 
-        leftArrow.addEventListener('click', () => {
-            prevItem();
-            resetInterval();
-        });
+        function adjustImagePosition(img) {
+            const container = img.closest('.carousel-item');
+            const containerAspect = container.offsetWidth / container.offsetHeight;
+            const imgAspect = img.naturalWidth / img.naturalHeight;
 
-        rightArrow.addEventListener('click', () => {
-            nextItem();
-            resetInterval();
-        });
+            if (imgAspect > containerAspect) {
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.style.top = '50%';
+                img.style.left = '0';
+                img.style.transform = 'translateY(-50%)';
+            } else {
+                img.style.width = 'auto';
+                img.style.height = '100%';
+                img.style.top = '0';
+                img.style.left = '50%';
+                img.style.transform = 'translateX(-50%)';
+            }
+        }
+
+        leftArrow.addEventListener('click', prevItem);
+        rightArrow.addEventListener('click', nextItem);
 
         // Auto-scroll
         let intervalId = setInterval(nextItem, 5000);
@@ -98,28 +113,38 @@ function initializeHeroCarousel() {
         carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
         carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
 
-        // Reset interval when user interacts
-        function resetInterval() {
-            clearInterval(intervalId);
-            intervalId = setInterval(nextItem, 5000);
-        }
-
-        // Ensure images are fully loaded before displaying
+        // Adjust all images on load
         items.forEach(item => {
             const img = item.querySelector('img');
-            img.addEventListener('load', () => {
-                // Optionally, perform any adjustments if needed
-            });
+            img.addEventListener('load', () => adjustImagePosition(img));
         });
 
-        // Initial display
+        // Ensure first image is displayed and adjusted
         showItem(currentIndex);
 
-        // Adjust images on window resize if necessary
+        // Adjust images on window resize
         window.addEventListener('resize', () => {
-            // Implement any dynamic adjustments if required
+            adjustImagePosition(items[currentIndex].querySelector('img'));
         });
     });
+}
+
+function initializeAnimatedHeaders() {
+    const animateHeaders = () => {
+        const headers = document.querySelectorAll('.animate-header');
+        headers.forEach(header => {
+            const headerTop = header.getBoundingClientRect().top;
+            const headerBottom = header.getBoundingClientRect().bottom;
+            if (headerTop < window.innerHeight && headerBottom > 0) {
+                header.classList.add('animate');
+            } else {
+                header.classList.remove('animate');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateHeaders);
+    animateHeaders(); // Run once on load
 }
 
 function initializeContactForm() {
@@ -154,6 +179,13 @@ function initializeFAQ() {
     });
 }
 
+function initializeParallax() {
+    const heroSections = document.querySelectorAll('.hero-section');
+    heroSections.forEach(section => {
+        section.style.backgroundImage = `url('${section.dataset.background}')`;
+    });
+}
+
 function initializeFadeIn() {
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
@@ -172,6 +204,31 @@ function initializeFadeIn() {
         element.classList.add('hidden');
         observer.observe(element);
     });
+}
+
+function initializeCustomCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+}
+
+function initializeDarkMode() {
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.id = 'dark-mode-toggle';
+    darkModeToggle.innerHTML = '🌓';
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
 }
 
 function initializeBackToTop() {
@@ -227,29 +284,38 @@ function initializeRiceCalculator() {
     });
 }
 
-// Dummy calculation functions (implement your own logic)
 function calculatePersonalRice(people, mealType, riceType) {
-    // Example calculation
-    const perPerson = mealType === 'standard' ? 0.5 : 0.75; // kg per person
-    return {
-        kilos: (people * perPerson).toFixed(2)
-    };
+    const baseServing = mealType === 'main' ? 75 : 50; // grams per person
+    let totalGrams = people * baseServing;
+    
+    if (riceType === 'brown') totalGrams *= 1.2; // Brown rice requires more
+    
+    const cups = (totalGrams / 180).toFixed(2); // 1 cup ≈ 180g of uncooked rice
+    return { grams: totalGrams, cups: cups };
+}
+
+function calculateBulkRice(eventType, guestCount, riceType) {
+    let baseServing;
+    switch(eventType) {
+        case 'wedding': baseServing = 100; break;
+        case 'corporate': baseServing = 80; break;
+        case 'restaurant': baseServing = 90; break;
+        default: baseServing = 85;
+    }
+    
+    let totalKilos = (guestCount * baseServing) / 1000; // Convert to kilos
+    
+    if (riceType === 'parboiled') totalKilos *= 0.9; // Parboiled rice expands more
+    
+    return { kilos: totalKilos.toFixed(2) };
 }
 
 function displayPersonalResult(result) {
     const resultDiv = document.getElementById('personalCalculatorResult');
     resultDiv.innerHTML = `
-        <p><i class="fas fa-check-circle"></i> For your meal, you'll need approximately:</p>
-        <p><strong>${result.kilos} kilograms</strong> of uncooked rice.</p>
+        <p><i class="fas fa-check-circle"></i> You need approximately:</p>
+        <p><strong>${result.grams} grams</strong> or <strong>${result.cups} cups</strong> of uncooked rice.</p>
     `;
-}
-
-function calculateBulkRice(eventType, guestCount, riceType) {
-    // Example calculation
-    const perGuest = 0.6; // kg per guest
-    return {
-        kilos: (guestCount * perGuest).toFixed(2)
-    };
 }
 
 function displayBulkResult(result) {
@@ -282,3 +348,12 @@ function initializeRecipeCategories() {
         });
     });
 }
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
+
+// Adjust images on window resize
+window.addEventListener('resize', () => {
+    const activeItems = document.querySelectorAll('.carousel-item.active img');
+    activeItems.forEach(adjustImagePosition);
+});
