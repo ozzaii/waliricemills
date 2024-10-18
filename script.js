@@ -94,11 +94,6 @@ function initializeHeroCarousel() {
 
         // Ensure first image is displayed
         showItem(currentIndex);
-
-        // Adjust images on window resize
-        window.addEventListener('resize', () => {
-            showItem(currentIndex);
-        });
     });
 }
 
@@ -322,7 +317,7 @@ function initializeRecipeCategories() {
     });
 }
 
-// Call the function when the DOM is loaded
+// Call the function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
 
 // Adjust images on window resize
