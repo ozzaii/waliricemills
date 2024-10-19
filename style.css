@@ -1054,6 +1054,7 @@ footer {
     flex: 0 0 100%;
     position: relative;
     height: 100%;
+    overflow: hidden;
 }
 
 .carousel-item img {
@@ -1138,6 +1139,15 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-carousel {
+        height: 60vh;
+    }
+
+    .carousel-content {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
     .carousel-content h1 {
         font-size: 2rem;
     }
@@ -1150,6 +1160,26 @@ footer {
         font-size: 1.2rem;
         width: 2.5rem;
         height: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-carousel {
+        height: 50vh;
+    }
+
+    .carousel-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-arrow {
+        font-size: 1rem;
+        width: 2rem;
+        height: 2rem;
     }
 }
 

@@ -128,17 +128,6 @@ function initializeHeroCarousel() {
         }
     }
 
-    // Auto-play with pause on hover
-    let autoPlayInterval = setInterval(nextSlide, 5000);
-
-    carousel.addEventListener('mouseenter', () => {
-        clearInterval(autoPlayInterval);
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        autoPlayInterval = setInterval(nextSlide, 5000);
-    });
-
     // Intelligent image trimming
     function adjustImagePosition(img) {
         const container = img.closest('.carousel-item');
@@ -168,7 +157,7 @@ function initializeHeroCarousel() {
         }
     }
 
-    // Initial image position adjustment and window resize handling
+    // Adjust image position on window resize
     function adjustAllImages() {
         items.forEach(item => {
             const img = item.querySelector('img');
@@ -178,18 +167,6 @@ function initializeHeroCarousel() {
 
     window.addEventListener('resize', adjustAllImages);
     window.addEventListener('load', adjustAllImages);
-
-    // Preload images for smooth transitions
-    function preloadImages() {
-        items.forEach(item => {
-            const img = item.querySelector('img');
-            const src = img.getAttribute('src');
-            const preloadImg = new Image();
-            preloadImg.src = src;
-        });
-    }
-
-    preloadImages();
 
     // Initialize the first slide
     showSlide(currentIndex);
@@ -418,9 +395,3 @@ function initializeRecipeCategories() {
 
 // Call the function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
-
-// Adjust images on window resize
-window.addEventListener('resize', () => {
-    const activeItems = document.querySelectorAll('.carousel-item.active img');
-    activeItems.forEach(adjustImagePosition);
-});
