@@ -1041,6 +1041,7 @@ footer {
     width: 100%;
     height: calc(100vh - var(--navbar-height));
     overflow: hidden;
+    margin-top: var(--navbar-height);
 }
 
 .carousel-container {
@@ -1075,12 +1076,12 @@ footer {
 }
 
 .carousel-content h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
 .carousel-content p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .carousel-arrow {
@@ -1110,8 +1111,17 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-carousel {
+        height: 50vh;
+    }
+
+    .carousel-content {
+        padding: 1rem;
+        max-width: 90%;
+    }
+
     .carousel-content h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .carousel-content p {
@@ -1125,8 +1135,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .carousel-content {
-        padding: 1rem;
+    .hero-carousel {
+        height: 40vh;
     }
 
     .carousel-content h1 {

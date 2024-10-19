@@ -108,6 +108,40 @@ function initializeHeroCarousel() {
 
     // Auto-play
     setInterval(nextSlide, 5000);
+
+    // Adjust image position on window resize
+    window.addEventListener('resize', () => {
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            adjustImagePosition(img);
+        });
+    });
+
+    // Initial image position adjustment
+    items.forEach(item => {
+        const img = item.querySelector('img');
+        adjustImagePosition(img);
+    });
+}
+
+function adjustImagePosition(img) {
+    const container = img.closest('.carousel-item');
+    const containerAspect = container.offsetWidth / container.offsetHeight;
+    const imgAspect = img.naturalWidth / img.naturalHeight;
+
+    if (containerAspect > imgAspect) {
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.style.top = '50%';
+        img.style.left = '0';
+        img.style.transform = 'translateY(-50%)';
+    } else {
+        img.style.width = 'auto';
+        img.style.height = '100%';
+        img.style.top = '0';
+        img.style.left = '50%';
+        img.style.transform = 'translateX(-50%)';
+    }
 }
 
 function initializeAnimatedHeaders() {
