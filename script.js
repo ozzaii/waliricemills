@@ -65,10 +65,29 @@ function initializeHeroCarousel() {
     const arrowRight = carousel.querySelector('.carousel-arrow.right');
     let currentIndex = 0;
 
+    // Create indicators
+    const indicatorsContainer = document.createElement('div');
+    indicatorsContainer.className = 'carousel-indicators';
+    items.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = 'carousel-indicator';
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
+    });
+    carousel.appendChild(indicatorsContainer);
+
     function showSlide(index) {
         container.style.transform = `translateX(-${index * 100}%)`;
         items.forEach((item, i) => {
             item.classList.toggle('active', i === index);
+        });
+        updateIndicators(index);
+    }
+
+    function updateIndicators(index) {
+        const indicators = carousel.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
         });
     }
 
@@ -79,6 +98,11 @@ function initializeHeroCarousel() {
 
     function prevSlide() {
         currentIndex = (currentIndex - 1 + items.length) % items.length;
+        showSlide(currentIndex);
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
         showSlide(currentIndex);
     }
 
@@ -106,42 +130,71 @@ function initializeHeroCarousel() {
         }
     }
 
-    // Auto-play
-    setInterval(nextSlide, 5000);
+    // Auto-play with pause on hover
+    let autoPlayInterval = setInterval(nextSlide, 5000);
 
-    // Adjust image position on window resize
-    window.addEventListener('resize', () => {
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoPlayInterval);
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        autoPlayInterval = setInterval(nextSlide, 5000);
+    });
+
+    // Intelligent image trimming
+    function adjustImagePosition(img) {
+        const container = img.closest('.carousel-item');
+        const containerAspect = container.offsetWidth / container.offsetHeight;
+        const imgAspect = img.naturalWidth / img.naturalHeight;
+
+        if (containerAspect > imgAspect) {
+            const scale = container.offsetWidth / img.naturalWidth;
+            const height = img.naturalHeight * scale;
+            const topOffset = (container.offsetHeight - height) / 2;
+
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            img.style.top = `${topOffset}px`;
+            img.style.left = '0';
+            img.style.transform = 'none';
+        } else {
+            const scale = container.offsetHeight / img.naturalHeight;
+            const width = img.naturalWidth * scale;
+            const leftOffset = (container.offsetWidth - width) / 2;
+
+            img.style.width = 'auto';
+            img.style.height = '100%';
+            img.style.top = '0';
+            img.style.left = `${leftOffset}px`;
+            img.style.transform = 'none';
+        }
+    }
+
+    // Initial image position adjustment and window resize handling
+    function adjustAllImages() {
         items.forEach(item => {
             const img = item.querySelector('img');
             adjustImagePosition(img);
         });
-    });
-
-    // Initial image position adjustment
-    items.forEach(item => {
-        const img = item.querySelector('img');
-        adjustImagePosition(img);
-    });
-}
-
-function adjustImagePosition(img) {
-    const container = img.closest('.carousel-item');
-    const containerAspect = container.offsetWidth / container.offsetHeight;
-    const imgAspect = img.naturalWidth / img.naturalHeight;
-
-    if (containerAspect > imgAspect) {
-        img.style.width = '100%';
-        img.style.height = 'auto';
-        img.style.top = '50%';
-        img.style.left = '0';
-        img.style.transform = 'translateY(-50%)';
-    } else {
-        img.style.width = 'auto';
-        img.style.height = '100%';
-        img.style.top = '0';
-        img.style.left = '50%';
-        img.style.transform = 'translateX(-50%)';
     }
+
+    window.addEventListener('resize', adjustAllImages);
+    window.addEventListener('load', adjustAllImages);
+
+    // Preload images for smooth transitions
+    function preloadImages() {
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            const src = img.getAttribute('src');
+            const preloadImg = new Image();
+            preloadImg.src = src;
+        });
+    }
+
+    preloadImages();
+
+    // Initialize the first slide
+    showSlide(currentIndex);
 }
 
 function initializeAnimatedHeaders() {
