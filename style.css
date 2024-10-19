@@ -1267,3 +1267,13 @@ main, #featured-recipe, #recipe-grid, #recipe-tips {
     }
 }
 
+main {
+    padding-top: 2rem; /* Adjust as needed */
+}
+
+/* You might want to style your h1 elements differently now that they're not in a hero section */
+main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
