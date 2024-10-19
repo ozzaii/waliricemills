@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     // Initialize other components
-    initializeHeroCarousel();
     initializeContactForm();
     initializeFAQ();
     initializeFadeIn();
@@ -59,42 +58,7 @@ function initializeNavbar() {
 }
 
 function initializeHeroCarousel() {
-    const carousels = document.querySelectorAll('.hero-carousel');
-    
-    carousels.forEach(carousel => {
-        const items = carousel.querySelectorAll('.carousel-item');
-        const leftArrow = carousel.querySelector('.carousel-arrow.left');
-        const rightArrow = carousel.querySelector('.carousel-arrow.right');
-        let currentIndex = 0;
-
-        function showItem(index) {
-            items.forEach(item => item.classList.remove('active'));
-            items[index].classList.add('active');
-        }
-
-        function nextItem() {
-            currentIndex = (currentIndex + 1) % items.length;
-            showItem(currentIndex);
-        }
-
-        function prevItem() {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            showItem(currentIndex);
-        }
-
-        leftArrow.addEventListener('click', prevItem);
-        rightArrow.addEventListener('click', nextItem);
-
-        // Auto-scroll
-        let intervalId = setInterval(nextItem, 5000);
-
-        // Pause auto-scroll on hover
-        carousel.addEventListener('mouseenter', () => clearInterval(intervalId));
-        carousel.addEventListener('mouseleave', () => intervalId = setInterval(nextItem, 5000));
-
-        // Ensure first image is displayed
-        showItem(currentIndex);
-    });
+    // ... (remove all code inside this function)
 }
 
 function initializeAnimatedHeaders() {
