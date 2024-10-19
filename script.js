@@ -63,18 +63,16 @@ function initializeHeroCarousel() {
     const items = carousel.querySelectorAll('.carousel-item');
     const arrowLeft = carousel.querySelector('.carousel-arrow.left');
     const arrowRight = carousel.querySelector('.carousel-arrow.right');
+    const indicatorsContainer = carousel.querySelector('.carousel-indicators');
     let currentIndex = 0;
 
     // Create indicators
-    const indicatorsContainer = document.createElement('div');
-    indicatorsContainer.className = 'carousel-indicators';
     items.forEach((_, index) => {
         const indicator = document.createElement('div');
         indicator.className = 'carousel-indicator';
         indicator.addEventListener('click', () => goToSlide(index));
         indicatorsContainer.appendChild(indicator);
     });
-    carousel.appendChild(indicatorsContainer);
 
     function showSlide(index) {
         container.style.transform = `translateX(-${index * 100}%)`;
@@ -195,6 +193,7 @@ function initializeHeroCarousel() {
 
     // Initialize the first slide
     showSlide(currentIndex);
+    adjustAllImages();
 }
 
 function initializeAnimatedHeaders() {
