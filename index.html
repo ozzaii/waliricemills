@@ -42,94 +42,60 @@
             <button class="carousel-arrow left" aria-label="Previous slide">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <div class="carousel-indicators"></div>
             <button class="carousel-arrow right" aria-label="Next slide">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
-        <div class="carousel-overlay"></div>
+        <div class="carousel-indicators"></div>
     </div>
 
     <main>
-        <section id="about-preview" class="fade-in">
+        <section id="featured-products" class="fade-in">
             <div class="container">
-                <h1>Welcome to Salman Rice Mill</h1>
-                <p class="fade-in">Founded in 1980, Salman Rice Mill has been a cornerstone of quality rice production in Sheikhpura. Our commitment to excellence and sustainable farming practices ensure that every grain we produce meets the highest standards of quality.</p>
-                <a href="about.html" class="btn fade-in">Learn More About Us</a>
+                <h2>Our Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="product1.jpg" alt="Premium Basmati Rice">
+                        <h3>Premium Basmati Rice</h3>
+                        <p>Long-grain aromatic rice perfect for biryanis and pilafs</p>
+                        <a href="products.html#basmati" class="btn">Learn More</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="product2.jpg" alt="Whole Grain Brown Rice">
+                        <h3>Whole Grain Brown Rice</h3>
+                        <p>Nutritious and hearty, ideal for health-conscious consumers</p>
+                        <a href="products.html#brown-rice" class="btn">Learn More</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="product3.jpg" alt="Jasmine Rice">
+                        <h3>Jasmine Rice</h3>
+                        <p>Fragrant and soft, perfect for Asian cuisine</p>
+                        <a href="products.html#jasmine" class="btn">Learn More</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="featured-products" class="fade-in">
+        <section id="about-preview" class="fade-in">
             <div class="container">
-                <h2 class="fade-in">Our Products</h2>
-                <div class="product-grid fade-in">
-                    <div class="product-card">
-                        <img src="placeholder-rice1.jpg" alt="Premium Long Grain Rice">
-                        <h3>Premium Long Grain Rice</h3>
-                        <p>Perfect for pilafs and side dishes</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="placeholder-rice2.jpg" alt="Aromatic Basmati Rice">
-                        <h3>Aromatic Basmati Rice</h3>
-                        <p>Ideal for biryanis and special occasions</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="placeholder-rice3.jpg" alt="Whole Grain Brown Rice">
-                        <h3>Whole Grain Brown Rice</h3>
-                        <p>Nutritious option for health-conscious consumers</p>
-                    </div>
-                </div>
-                <a href="products.html" class="btn fade-in">Explore Our Full Range</a>
+                <h2>About Salman Rice Mill</h2>
+                <p>Founded in 1980, Salman Rice Mill has been a cornerstone of quality rice production in Sheikhpura. Our commitment to excellence and sustainable farming practices ensure that every grain we produce meets the highest standards of quality.</p>
+                <a href="about.html" class="btn">Read Our Story</a>
             </div>
         </section>
 
         <section id="process-preview" class="fade-in">
             <div class="container">
-                <h2 class="fade-in">Our Milling Process</h2>
-                <p class="fade-in">We combine traditional techniques with modern technology to ensure the highest quality rice. Our process preserves the natural goodness of each grain while meeting the highest standards of cleanliness and efficiency.</p>
-                <a href="process.html" class="btn fade-in">Learn About Our Process</a>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <h2 class="fade-in">Contact Us</h2>
-                <div class="contact-wrapper">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                    <div class="contact-info">
-                        <h3>Our Location</h3>
-                        <p>Industrial Area, Sheikhpura, Punjab, Pakistan</p>
-                        <p>Phone: +92 123 456 7890</p>
-                        <p>Email: info@salmanricemill.com</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <h2>Our Milling Process</h2>
+                <p>At Salman Rice Mill, we combine state-of-the-art technology with traditional expertise to bring you the finest quality rice. Our rigorous milling process ensures that each grain is perfectly processed and packaged for your enjoyment.</p>
+                <a href="process.html" class="btn">Discover Our Process</a>
             </div>
         </section>
 
         <section id="testimonials" class="fade-in">
             <div class="container">
-                <h2 class="fade-in">What Our Customers Say</h2>
-                <div class="testimonial-slider fade-in">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-slider">
                     <div class="testimonial-item">
                         <p>"Salman Rice Mill consistently delivers the highest quality rice. It's a staple in our restaurant."</p>
                         <cite>- Ahmed Khan, Chef</cite>
@@ -138,7 +104,6 @@
                         <p>"The aromatic basmati from Salman Rice Mill is simply unmatched. Our customers love it!"</p>
                         <cite>- Sarah Ali, Food Importer</cite>
                     </div>
-                    <!-- Add more testimonials as needed -->
                 </div>
             </div>
         </section>

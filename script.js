@@ -61,17 +61,18 @@ function initializeHeroCarousel() {
     const carousel = document.querySelector('.hero-carousel');
     const container = carousel.querySelector('.carousel-container');
     const items = carousel.querySelectorAll('.carousel-item');
-    const arrowLeft = carousel.querySelector('.carousel-arrow.left');
-    const arrowRight = carousel.querySelector('.carousel-arrow.right');
-    const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+    const indicators = carousel.querySelector('.carousel-indicators');
+    const prevBtn = carousel.querySelector('.carousel-arrow.left');
+    const nextBtn = carousel.querySelector('.carousel-arrow.right');
     let currentIndex = 0;
 
     // Create indicators
     items.forEach((_, index) => {
         const indicator = document.createElement('div');
         indicator.className = 'carousel-indicator';
+        if (index === 0) indicator.classList.add('active');
         indicator.addEventListener('click', () => goToSlide(index));
-        indicatorsContainer.appendChild(indicator);
+        indicators.appendChild(indicator);
     });
 
     function showSlide(index) {
@@ -104,8 +105,8 @@ function initializeHeroCarousel() {
         showSlide(currentIndex);
     }
 
-    arrowLeft.addEventListener('click', prevSlide);
-    arrowRight.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
 
     // Touch events for mobile swipe
     let touchStartX = 0;
@@ -392,6 +393,6 @@ function initializeRecipeCategories() {
         });
     });
 }
-
 // Call the function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initializeHeroCarousel);
+
