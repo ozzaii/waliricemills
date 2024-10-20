@@ -153,64 +153,59 @@ header {
 }
 
 /* Button Styles */
-.btn {
-    display: block;
-    width: fit-content;
-    margin: 1rem auto;
-    background: transparent;
-    color: var(--accent-color);
-    padding: 0.8rem 1.5rem;
-    border: 2px solid var(--gold-color);
-    border-radius: 5px;
-    font-size: 1rem;
+.btn, .cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
     text-decoration: none;
-    transition: var(--transition);
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    text-align: center;
-    transition: all 0.3s ease;
+    z-index: 1;
 }
 
-.btn::before {
+.btn::before, .cta-button::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: var(--gold-color);
-    transition: var(--transition);
-}
-
-.btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: var(--gold-color);
-    transition: var(--transition);
-}
-
-.btn:hover {
-    background-color: var(--gold-color);
-    color: var(--white-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover::before {
     left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    z-index: -1;
 }
 
-.btn:hover::after {
-    right: 0;
+.btn:hover, .cta-button:hover {
+    color: var(--white-color);
+}
+
+.btn:hover::before, .cta-button:hover::before {
+    width: 100%;
+}
+
+.btn:active, .cta-button:active {
+    transform: scale(0.98);
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    border-color: var(--accent-color);
+}
+
+.cta-button::before {
+    background-color: var(--primary-color);
+}
+
+.cta-button:hover {
+    border-color: var(--primary-color);
 }
 
 /* Section Styles */
@@ -1557,9 +1552,5 @@ main h1 {
 
 .cta-button:hover::before {
     left: 0;
-}
-
-.cta-button:hover::after {
-    right: 0;
 }
 
